@@ -1,0 +1,76 @@
+public class Activity1 {
+    public static void main(String[] args) {
+        int num1, num2, num3, average;
+        num1 = 125;
+        num2 = 28;
+        num3 = -25;
+        average = (num1 + num2 + num3) / 3;
+        System.out.println("Number 1: " + num1);
+        System.out.println("Number 2: " + num2);
+        System.out.println("Number 3: " + num3);
+        System.out.println("Average: " + average);
+    }
+}
+import java.util.Scanner;
+public class Activity2 {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        int length, width, area, perimeter;
+        System.out.print("Enter the length: ");
+        length = console.nextInt();
+        System.out.print("Enter the width: ");
+        width = console.nextInt();
+        area = length * width;
+        perimeter = 2 * (length + width);
+        System.out.println("Area = " + area);
+        System.out.println("Perimeter = " + perimeter);
+        console.close();
+    }
+}
+import java.util.Scanner;  
+public class LabTask3 {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in); 
+        final int SECRET = 11;
+        final double RATE = 12.50;
+        int num1, num2, newNum;
+        String name;
+        double hoursWorked, wages;
+        System.out.print("Enter first integer (num1): ");
+        num1 = console.nextInt();
+        System.out.print("Enter second integer (num2): ");
+        num2 = console.nextInt();
+        System.out.println("The value of num1 = " + num1 + " and the value of num2 = " + num2);
+        newNum = num1 * 2 + num2;
+        System.out.println("The value of newNum after calculation = " + newNum);
+        newNum = newNum + SECRET;
+        System.out.println("The value of newNum after adding SECRET = " + newNum);
+        System.out.print("Enter your last name: ");
+        name = console.next();
+        System.out.print("Enter hours worked (0-70): ");
+        hoursWorked = console.nextDouble();
+        wages = RATE * hoursWorked;
+        System.out.println();
+        System.out.println("Name: " + name);
+        System.out.println("Pay Rate: " + RATE);
+        System.out.println("Hours Worked: " + hoursWorked);
+        System.out.println("Wages: " + wages);
+        System.out.println("Secret Number: " + SECRET);
+        console.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
