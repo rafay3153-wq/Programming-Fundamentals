@@ -1,0 +1,240 @@
+import java.util.*;
+public class Assignment2 {
+    private static Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {
+        displayMainMenu(); }
+    public static void displayMainMenu() {
+        while (true) {
+            System.out.println("\n╔══════════════════════════════════════╗");
+            System.out.println("║        Main Menu (Assignment-2)      ║");
+            System.out.println("╠══════════════════════════════════════╣");
+            System.out.println("║  1 -- Question-1                     ║");
+            System.out.println("║  2 -- Question-2                     ║");
+            System.out.println("║  3 -- Question-3                     ║");
+            System.out.println("║  4 -- Question-4                     ║");
+            System.out.println("║  5 -- Question-5                     ║");
+            System.out.println("║  0 -- Exit                           ║");
+            System.out.println("╠══════════════════════════════════════╣");
+            System.out.println("║ Press option (0-5) to execute program║");
+            System.out.println("╚══════════════════════════════════════╝");
+            System.out.print("Enter your option: ");
+            String choice = input.nextLine().trim();
+            if (choice.equals("0")) {
+                System.out.println("Thank you for using the program. Goodbye!");
+                break; }
+            switch (choice) {
+                case "1":
+                    executeQuestion1();
+                    break;
+                case "2":
+                    executeQuestion2();
+                    break;
+                case "3":
+                    executeQuestion3();
+                    break;
+                case "4":
+                    executeQuestion4();
+                    break;
+                case "5":
+                    executeQuestion5();
+                    break;
+                default:
+                    System.out.println("Invalid option! Please enter 0-5."); }
+        }
+    }
+    // Question 1
+    public static void executeQuestion1() {
+        while (true) {
+            System.out.println("\n╔══════════════════════════════════════╗");
+            System.out.println("║      Executing Question -- 1         ║");
+            System.out.println("╚══════════════════════════════════════╝");
+            System.out.print("Enter a SSN (format: xxx-xx-xxxx): ");
+            String ssn = input.nextLine().trim();
+            if (isValidSSN(ssn)) {
+                System.out.println(ssn + " is a valid social security number."); }
+            else {
+                System.out.println(ssn + " is an invalid social security number."); }
+            if (!askToContinue("Question 1")) break;
+        }
+    }
+    public static boolean isValidSSN(String ssn) {
+        if (ssn.length() != 11) return false;
+        for (int i = 0; i < 11; i++) {
+            char c = ssn.charAt(i);
+            if (i == 3 || i == 6) {
+                if (c != '-') return false; }
+            else if (!Character.isDigit(c)) {
+                return false; }
+        }
+        return true;
+    }
+    // Question 2
+    public static void executeQuestion2() {
+        while (true) {
+            System.out.println("\n╔══════════════════════════════════════╗");
+            System.out.println("║      Executing Question -- 2         ║");
+            System.out.println("╚══════════════════════════════════════╝");
+            System.out.print("Your major(Mathematics/Computer Science/Information Technology) and status (Freshman/Sophomore/Junior/Senior)");
+	    System.out.print("\n Enter two characters (e.g. M1): ");
+            String in = input.nextLine().trim();
+            if (in.length() != 2) {
+                System.out.println("Invalid input!"); }
+             else {
+                char majorChar = Character.toUpperCase(in.charAt(0));
+                char statusChar = in.charAt(1);
+                String major = "";
+                String status = "";
+                switch (majorChar) {
+                    case 'M': major = "Mathematics"; break;
+                    case 'C': major = "Computer Science"; break;
+                    case 'I': major = "Information Technology"; break;
+                    default: major = "Invalid"; break; }
+                switch (statusChar) {
+                    case '1': status = "Freshman"; break;
+                    case '2': status = "Sophomore"; break;
+                    case '3': status = "Junior"; break;
+                    case '4': status = "Senior"; break;
+                    default: status = "Invalid"; break; }
+                if (major.equals("Invalid") || status.equals("Invalid")) {
+                    System.out.println("Invalid input!"); }
+                else {
+                    System.out.println(major + " " + status); }
+            }
+            if (!askToContinue("Question 2")) break;
+        }
+    }
+    // Question 3
+    public static void executeQuestion3() {
+        while (true) {
+            System.out.println("\n╔══════════════════════════════════════╗");
+            System.out.println("║      Executing Question -- 3         ║");
+            System.out.println("╚══════════════════════════════════════╝");
+            String plate = generatePlateNumber();
+            System.out.println("Generated Plate Number: " + plate);
+            if (!askToContinue("Question 3")) break;
+        }
+    }
+    public static String generatePlateNumber() {
+        Random random = new Random();
+        StringBuilder plate = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            plate.append((char) ('A' + random.nextInt(26))); }
+        for (int i = 0; i < 4; i++) {
+            plate.append(random.nextInt(10)); }
+        return plate.toString();
+    }
+    // Question 4
+    public static void executeQuestion4() {
+        while (true) {
+            System.out.println("\n╔══════════════════════════════════════╗");
+            System.out.println("║      Executing Question -- 4         ║");
+            System.out.println("╚══════════════════════════════════════╝");
+            System.out.print("Enter a decimal integer: ");
+            int decimal = Integer.parseInt(input.nextLine().trim());
+            String binary = decimalToBinary(decimal);
+            System.out.println("Binary equivalent: " + binary);
+            if (!askToContinue("Question 4")) {
+                break; }      
+        }
+    }       
+    public static String decimalToBinary(int decimal) {
+        if (decimal == 0) return "0";
+        StringBuilder binary = new StringBuilder();
+        int num = Math.abs(decimal);
+        while (num > 0) {
+            binary.insert(0, num % 2);
+            num /= 2; }
+        if (decimal < 0) {
+            return "-" + binary.toString(); }
+        return binary.toString(); }
+
+    // Question 5
+    public static void executeQuestion5() {
+        while (true) {
+            System.out.println("\n╔══════════════════════════════════════╗");
+            System.out.println("║      Executing Question -- 5         ║");
+            System.out.println("╚══════════════════════════════════════╝");
+            administerGlobalWarmingQuiz();
+            if (!askToContinue("Question 5")) break;
+        }
+    }
+    public static void administerGlobalWarmingQuiz() {
+        String[][] questions = {
+            {
+                "What is the primary greenhouse gas responsible for global warming?",
+                "1. Carbon Dioxide",
+                "2. Oxygen",
+                "3. Nitrogen", 
+                "4. Hydrogen",
+                "1"
+            },
+            {
+                "Which organization shared the 2007 Nobel Peace Prize with Al Gore for climate change work?",
+                "1. World Health Organization",
+                "2. Intergovernmental Panel on Climate Change", 
+                "3. United Nations Environment Programme",
+                "4. Greenpeace International",
+                "2"
+            },
+            {
+                "What is a common argument made by global warming skeptics?",
+                "1. Climate change is entirely natural",
+                "2. Temperature data is unreliable",
+                "3. Computer models are inaccurate",
+                "4. All of the above",
+                "4"
+            },
+            {
+                "Which of these is NOT considered a potential consequence of global warming?",
+                "1. Rising sea levels",
+                "2. More frequent extreme weather events", 
+                "3. Decreased biodiversity",
+                "4. Increased volcanic activity",
+                "4"
+            },
+            {
+                "The Paris Agreement aims to limit global temperature rise to:",
+                "1. 1°C above pre-industrial levels",
+                "2. 1.5°C above pre-industrial levels",
+                "3. 2°C above pre-industrial levels", 
+                "4. 2.5°C above pre-industrial levels",
+                "3"
+            }
+        }; 
+        int score = 0;
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println("\nQuestion " + (i + 1) + ": " + questions[i][0]);
+            for (int j = 1; j <= 4; j++) {
+                System.out.println(questions[i][j]); } 
+            System.out.print("Enter your answer (1-4): ");
+            String answer = input.nextLine().trim();
+            if (answer.equals(questions[i][5])) {
+                System.out.println("Correct!");
+                score++; }
+            else {
+                System.out.println("Incorrect! The correct answer was: " + questions[i][5]); }
+        }
+        System.out.println("\n╔══════════════════════════════════════╗");
+        System.out.println("║            Quiz Results              ║");
+        System.out.println("╠══════════════════════════════════════╣");
+        System.out.println("║ Your score: " + score + "/5                      ║");
+        if (score == 5) {
+            System.out.println("║ Excellent!                           ║"); }
+         else if (score >= 3) {
+            System.out.println("║ Good job! Keep learning!             ║"); }
+         else {
+            System.out.println("║ Time to brush up on your knowledge.  ║"); 
+	    System.out.println("\n  Recommended websites for research:");
+            System.out.println("  - NASA Climate Change");
+            System.out.println("  - NOAA Climate.gov");
+            System.out.println("  - Skeptical Science");
+            System.out.println("  - National Geographic Climate Change"); }
+        System.out.println("╚══════════════════════════════════════╝"); 
+	}
+    public static boolean askToContinue(String questionName) {
+        System.out.print("\n Do you want to Execute this question again then press (y) Otherwise Press (b) to got to the main menu");
+	System.out.print("\n Enter your option: ");
+        String choice = input.nextLine().trim().toLowerCase();
+        return choice.equals("y");
+    }
+}
