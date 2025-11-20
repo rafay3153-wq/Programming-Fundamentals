@@ -1,0 +1,226 @@
+public class LabTask1 {
+	public static void main(String[] args) {
+	int x = 10;
+	int y = 15;
+	int z = 20;
+	boolean expr1 = !(x > 10);
+	System.out.println("Expression 1: !(x > 10) = " + expr1);
+	boolean expr2 = (x <= 5) || (y < 15);
+	System.out.println("Expression 2 : x <=5 || y < 15 = " + expr2);
+	boolean expr3 = (x != 5) && (y != z);
+	System.out.println("Expression 3: x != 5 $$ y != z = " + expr3);
+	boolean expr4 = (x >= z) || (x + y >=z);
+	System.out.println("Expression 4: x >=z || (x + y >= z) = " + expr4);
+	boolean expr5 = (x <= y-2) && (y >=z) || (z -2 != 20);
+	System.out.println("Expression 5: (x <= y-2) && (y >=z) || (z -2 != 20)= " + expr5);
+	}
+}
+public class LabTask1 {
+	public static void main(String[] args) {
+	int x = 10;
+	int y = 15;
+	int z = 20;
+	boolean expr1 = !(x > 10);
+	System.out.println("Expression 1: !(x > 10) = " + expr1);
+	boolean expr2 = (x <= 5) || (y < 15);
+	System.out.println("Expression 2 : x <=5 || y < 15 = " + expr2);
+	boolean expr3 = (x != 5) && (y != z);
+	System.out.println("Expression 3: x != 5 $$ y != z = " + expr3);
+	boolean expr4 = (x >= z) || (x + y >=z);
+	System.out.println("Expression 4: x >=z || (x + y >= z) = " + expr4);
+	boolean expr5 = (x <= y-2) && (y >=z) || (z -2 != 20);
+	System.out.println("Expression 5: (x <= y-2) && (y >=z) || (z -2 != 20)= " + expr5);
+	}
+}
+public class LabTask3 {
+	public static void main(String[] args) {
+        boolean b1 = true;  
+        boolean b2 = false;
+        boolean b3 = (b1 == b2);  
+        System.out.println("b1 = " + b1); 
+        System.out.println("b2 = " + b2); 
+        System.out.println("b3 = " + b3); 
+    }
+}
+public class LabTask3 {
+	public static void main(String[] args) {
+        boolean b1 = true;  
+        boolean b2 = false;
+        boolean b3 = (b1 == b2);  
+        System.out.println("b1 = " + b1); 
+        System.out.println("b2 = " + b2); 
+        System.out.println("b3 = " + b3); 
+    }
+}
+import java.util.Scanner;
+public class LabTask4 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter first number (a): ");
+        int a = input.nextInt();
+        System.out.print("Enter second number (b): ");
+        int b = input.nextInt();
+        int minTwo = (a < b) ? a : b;
+        System.out.println("Minimum of two numbers: " + minTwo);
+        System.out.print("\nEnter first number (c): ");
+        int c = input.nextInt();
+        System.out.print("Enter second number (d): ");
+        int d = input.nextInt();
+        int minTwoAgain = (c < d) ? c : d;
+        System.out.println("Minimum of two numbers: " + minTwoAgain);
+        System.out.print("\nEnter an integer (x): ");
+        int x = input.nextInt();
+        int sign = (x > 0) ? 1 : (x < 0) ? -1 : 0;
+        System.out.println("Sign function output: " + sign);
+        System.out.print("\nEnter first number (p): ");
+        int p = input.nextInt();
+        System.out.print("Enter second number (q): ");
+        int q = input.nextInt();
+        System.out.print("Enter third number (r): ");
+        int r = input.nextInt();
+        int minThree;
+        if (p < q && p < r) {
+            minThree = p;
+        } else if (q < r) {
+            minThree = q;
+        } else {
+            minThree = r;
+        }
+        System.out.println("Minimum of three numbers: " + minThree);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter three integers: ");
+	int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        if (a == b && b == c) {
+            System.out.println(3);  
+        } else if (a == b || b == c || a == c) {
+            System.out.println(2);  
+        } else {
+            System.out.println(0);  
+        sc.close();
+		}
+	}		 
+}
+import java.util.Scanner;
+public class LabTask6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number (1 to 10): ");
+        int num = sc.nextInt();
+        if (num >= 1 && num <= 10) {
+            String roman = "";
+            switch (num) {
+                case 1: roman = "I"; break;
+                case 2: roman = "II"; break;
+                case 3: roman = "III"; break;
+                case 4: roman = "IV"; break;
+                case 5: roman = "V"; break;
+                case 6: roman = "VI"; break;
+                case 7: roman = "VII"; break;
+                case 8: roman = "VIII"; break;
+                case 9: roman = "IX"; break;
+                case 10: roman = "X"; break;
+            }
+            System.out.println("Roman numeral: " + roman);
+        } else {
+            System.out.println("Error: number must be between 1 and 10.");
+        }
+        sc.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask7 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the length of first rectangle: ");
+        double length1 = input.nextDouble();
+        System.out.print("Enter the width of first rectangle: ");
+        double width1 = input.nextDouble();
+        System.out.print("Enter the length of second rectangle: ");
+        double length2 = input.nextDouble();
+        System.out.print("Enter the width of second rectangle: ");
+        double width2 = input.nextDouble();
+        double area1 = length1 * width1;
+        double area2 = length2 * width2;
+        if (area1 > area2) {
+            System.out.println("The first rectangle has the greater area.");
+        } else if (area2 > area1) {
+            System.out.println("The second rectangle has the greater area.");
+        } else {
+            System.out.println("Both rectangles have the same area.");
+        }
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask8 {
+public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter month (in numeric form): ");
+        int month = input.nextInt();
+        System.out.print("Enter day: ");
+        int day = input.nextInt();
+        System.out.print("Enter two-digit year: ");
+        int year = input.nextInt();
+        if (month * day == year) {
+            System.out.println("The date is magic!");
+        } else {
+            System.out.println("The date is not magic.");
+        }
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask9 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to the Change Counting Game!");
+        System.out.println("Try to enter coins that add up to exactly one dollar (100 cents).");
+        System.out.print("Enter the number of pennies: ");
+        int pennies = input.nextInt();
+        System.out.print("Enter the number of nickels: ");
+        int nickels = input.nextInt();
+        System.out.print("Enter the number of dimes: ");
+        int dimes = input.nextInt();
+        System.out.print("Enter the number of quarters: ");
+        int quarters = input.nextInt();
+        int totalCents = pennies * 1 + nickels * 5 + dimes * 10 + quarters * 25;
+        if (totalCents == 100) {
+            System.out.println("Congratulations! You entered exactly one dollar. You win!");
+        } else if (totalCents < 100) {
+            System.out.println("The amount you entered is less than one dollar.");
+        } else {
+            System.out.println("The amount you entered is more than one dollar.");
+        }
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask10 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of books purchased this month: ");
+        int books = input.nextInt();
+        int points;
+        if (books == 0) {
+            points = 0;
+        } else if (books == 1) {
+            points = 5;
+        } else if (books == 2) {
+            points = 15;
+        } else if (books == 3) {
+            points = 30;
+        } else {  
+            points = 60;
+        }
+        System.out.println("You have earned " + points + " points this month.");
+        input.close();
+    }
+}
