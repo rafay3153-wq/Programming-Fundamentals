@@ -59,7 +59,171 @@ public class LabTask3 {
         console.close();
     }
 }
-
+import java.util.Scanner;
+public class LabTask1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter an amount in dollars (e.g., 11.56): ");
+        double amount = input.nextDouble();
+        int remainingCents = (int) (amount * 100);
+        int dollars = remainingCents / 100;
+        remainingCents = remainingCents % 100;
+        int quarters = remainingCents / 25;
+        remainingCents = remainingCents % 25;
+        int dimes = remainingCents / 10;
+        remainingCents = remainingCents % 10;
+        int nickels = remainingCents / 5;
+        remainingCents = remainingCents % 5;
+        int pennies = remainingCents;
+        System.out.println("\nAmount Breakdown:");
+        System.out.println("Dollars: " + dollars);
+        System.out.println("Quarters: " + quarters);
+        System.out.println("Dimes: " + dimes);
+        System.out.println("Nickels: " + nickels);
+        System.out.println("Pennies: " + pennies);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask2 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of students: ");
+        int N = input.nextInt();
+        System.out.print("Enter the number of apples: ");
+        int K = input.nextInt();
+        int applesPerStudent = K / N;
+        int remainingApples = K % N;
+        System.out.println("\nEach student gets: " + applesPerStudent + " apple(s)");
+        System.out.println("Apples remaining in basket: " + remainingApples);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask4 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the number of minutes since midnight: ");
+        int N = input.nextInt();
+        int hours = (N / 60) % 24;   
+        int minutes = N % 60;
+        System.out.println(hours + " " + minutes);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask5 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        final double cartonCapacity = 3.78;  
+        final double costperLiter = 0.38;  
+        final double profitperCarton = 0.27; 
+        System.out.print("Enter the total amount of milk produced (in liters): ");
+        double totalMilk = input.nextDouble();
+        int cartonsNeeded = (int) Math.round(totalMilk / cartonCapacity);
+        double totalCost = totalMilk *costperLiter;
+        double totalProfit = cartonsNeeded * profitperCarton;
+        System.out.println("\nNumber of cartons needed: " + cartonsNeeded);
+        System.out.printf("Cost of producing milk: $%.2f%n", totalCost);
+        System.out.printf("Profit for producing milk: $%.2f%n", totalProfit);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask6 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        final double taxRate = 0.14;       
+        final double clothesRate = 0.10;   
+        final double suppliesRate = 0.01;  
+        final double bondsRate = 0.25;    
+        final double parentsMatch = 0.50;  
+        System.out.print("Enter hourly pay rate: ");
+        double payRate = input.nextDouble();
+        System.out.print("Enter hours worked per week: ");
+        double hoursPerWeek = input.nextDouble();
+        double grossIncome = payRate * hoursPerWeek * 5;
+        double netIncome = grossIncome * (1 - taxRate);
+        double clothes = netIncome * clothesRate;
+        double supplies = netIncome * suppliesRate;
+        double remaining = netIncome - (clothes + supplies);
+        double bonds = remaining * bondsRate;
+        double parentBonds = bonds * parentsMatch;
+        System.out.printf("%nIncome before taxes: $%.2f%n", grossIncome);
+        System.out.printf("Income after taxes: $%.2f%n", netIncome);
+        System.out.printf("Money spent on clothes and accessories: $%.2f%n", clothes);
+        System.out.printf("Money spent on school supplies: $%.2f%n", supplies);
+        System.out.printf("Money spent to buy savings bonds: $%.2f%n", bonds);
+        System.out.printf("Money your parents spend on additional bonds: $%.2f%n", parentBonds);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask7 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        final double CLASS_A_PRICE = 20.0;
+        final double CLASS_B_PRICE = 15.0;
+        final double CLASS_C_PRICE = 10.0;
+        final double CLASS_D_PRICE = 5.0;
+        System.out.print("Enter number of Class A tickets sold: ");
+        int classA = input.nextInt();
+        System.out.print("Enter number of Class B tickets sold: ");
+        int classB = input.nextInt();
+        System.out.print("Enter number of Class C tickets sold: ");
+        int classC = input.nextInt();
+        System.out.print("Enter number of Class D tickets sold: ");
+        int classD = input.nextInt();
+        double incomeA = classA * CLASS_A_PRICE;
+        double incomeB = classB * CLASS_B_PRICE;
+        double incomeC = classC * CLASS_C_PRICE;
+        double incomeD = classD * CLASS_D_PRICE;
+        double totalIncome = incomeA + incomeB + incomeC + incomeD;
+        System.out.println("\n--- Ticket Sales Summary ---");
+        System.out.printf("Income from Class A: $%.2f%n", incomeA);
+        System.out.printf("Income from Class B: $%.2f%n", incomeB);
+        System.out.printf("Income from Class C: $%.2f%n", incomeC);
+        System.out.printf("Income from Class D: $%.2f%n", incomeD);
+        System.out.printf("\nTotal Income Generated: $%.2f%n", totalIncome);
+        input.close();
+    }
+}
+import java.util.Scanner;
+public class LabTask8 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number between 0 and 1000: ");
+        int number = input.nextInt();
+        int sum = 0;
+        int temp = number;
+        while (temp > 0) {
+            sum += temp % 10;  
+            temp /= 10;        
+        }
+        System.out.println("The sum of the digits is " + sum);
+        input.close();
+    }
+}
+public class LabTask9 {
+    public static void main(String[] args) {
+        double x = 75.3987;
+        double y = 982.89764;
+        System.out.printf("%.2f %n", x);
+        System.out.printf("%.2f %n", y);
+        System.out.printf("%.3f %n", x);
+        System.out.printf("%.3f %n", y);
+    }
+}
+public class LabTask9 {
+    public static void main(String[] args) {
+        double x = 75.3987;
+        double y = 982.89764;
+        System.out.printf("%.2f %n", x);
+        System.out.printf("%.2f %n", y);
+        System.out.printf("%.3f %n", x);
+        System.out.printf("%.3f %n", y);
+    }
+}
 
 
 
