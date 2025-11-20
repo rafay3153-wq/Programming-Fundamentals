@@ -1,0 +1,93 @@
+import java.util.Scanner;
+public class Q5 {
+	public static void main(String[] args) {
+	Scanner input=new Scanner(System.in);
+	int solarCost=7;
+	int companyCost=60;
+	System.out.print("Enter solar units: ");
+	int solarUnits= input.nextInt();
+	System.out.print("Enter company units: ");
+	int companyUnits= input.nextInt();
+	int totalUnits= solarUnits+companyUnits;	
+	double totalBill= totalUnits*companyCost;
+	double actualBill= solarUnits*solarCost + companyUnits*companyCost;
+	double savings= totalBill - actualBill;
+	System.out.println("Total Bill if from company: " + totalBill);
+	System.out.println("Actual bill: " + actualBill);
+	System.out.println("Savings: "+ savings);
+	input.close();
+	}
+}
+public class Q6 {
+	public static void main(String[] args) {
+	double weight=62;
+	double height=1.68;
+	double bmi=weight/(height*height);
+	System.out.println("Sara's BMI is: " + bmi);
+	}
+}
+public class Q7 {
+	public static void main(String[] args) {
+	int salary=50000;
+	int expense=37500;
+	int laptop=100000;
+	int savings=salary-expense;
+	int months=laptop/savings;
+	System.out.println("Monthly Savings: " + savings);
+	System.out.println("Months required: " + months);
+	}
+}
+public class Q8 {
+	public static void main(String[] args) {
+	double celsius=32;
+	double farenheit=(9.0/5.0)*celsius+32;
+	double kelvin=celsius+273.15;
+	System.out.println("Temperature in Farenheit: " + farenheit);
+	System.out.println("Temperature in Kelvin: " + kelvin);
+	}
+}
+public class Q9 {
+	public static void main(String[] args) {
+	double P=1200000;
+	int n=5*12;
+	double annualRate=0.12;
+	double r =annualRate/12;
+	double payment=(P*r)/(1-Math.pow(1+r,-n));
+	System.out.println("Monthly installment: " + payment);
+	}
+}
+import java.util.Scanner; 
+public class Q10 {
+	public static void main(String[] args) {
+	Scanner input=new Scanner(System.in);
+	System.out.print("Miles per day: ");
+	double miles=input.nextDouble();
+	System.out.print("Cost per gallon: ");
+	double cost=input.nextDouble();
+	System.out.print("Average mpg: ");
+	double mpg=input.nextDouble();
+	System.out.print("Parking fees: ");
+	double parking=input.nextDouble();
+	System.out.print("Tolls: ");
+	double tolls=input.nextDouble();
+	double gasCost=(miles/mpg)*cost;
+	double total=gasCost+parking+tolls;
+	System.out.println("Daily cost: " + total);
+	input.close();
+	}
+}
+import java.util.Scanner;
+public class Q11 {
+	public static void main(String[] args) {
+	Scanner input=new Scanner(System.in);
+	System.out.print("Enter 5 digit number: ");
+	int number=input.nextInt();
+	int d1 = number % 10;              
+        int d2 = (number / 10) % 10;       
+        int d3 = (number / 100) % 10;      
+        int d4 = (number / 1000) % 10;     
+        int d5 = (number / 10000) % 10; 
+	int reverse = d1 * 10000 + d2 * 1000 + d3 * 100 + d4 * 10 + d5;
+	System.out.println("Reverse number: " + reverse);
+	}
+}
