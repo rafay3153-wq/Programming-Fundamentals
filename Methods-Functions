@@ -1,0 +1,168 @@
+public class LabTask1a {
+	public static int sumDigits(long n) {
+	int sum=0;
+	while (n != 0) {
+            sum += n % 10;
+            n /= 10; }
+        return sum;
+    }
+	public static void main(String[] args) {
+	System.out.println("Sum of digits: " + sumDigits(234)); 
+    }
+}
+import java.util.Scanner;
+public class LabTask1b {
+    public static void reverse(int number) {
+	while(number!=0) {
+	System.out.print(Math.abs(number%10));
+	number/=10; }
+	}
+    public static void main(String[] args) {
+	Scanner scn=new Scanner(System.in);
+	int number=scn.nextInt();
+	System.out.println("Reversed number: ");
+	reverse(number);
+	}
+}
+import java.util.Scanner;
+public class LabTask2 {
+    public static int reverse(int number) {
+        int reversedNumber = 0;
+        while (number != 0) {
+            int remainder = number % 10;
+            reversedNumber = reversedNumber * 10 + remainder;
+            number /= 10; }
+        return reversedNumber;
+    }
+    public static boolean isPalindrome(int number) {
+        return number == reverse(number);
+    }
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scn.nextInt();
+        scn.close();
+        if (isPalindrome(number)) {
+            System.out.println(number + " is a palindrome."); }
+        else {
+            System.out.println(number + " is not a palindrome."); }   
+    }
+}
+
+import java.util.Scanner;
+public class LabTask3 {
+    public static void displaySortedNumbers(double num1, double num2, double num3) {
+        double min = Math.min(num1, Math.min(num2, num3));
+        double max = Math.max(num1, Math.max(num2, num3));
+        double mid = num1 + num2 + num3 - min - max;
+        System.out.println(min + " " + mid + " " + max);
+    }
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter three numbers: ");
+        double num1 = scn.nextDouble();
+        double num2 = scn.nextDouble();
+        double num3 = scn.nextDouble();
+        scn.close();
+        System.out.println("Numbers in increasing order: ");
+        displaySortedNumbers(num1, num2, num3);
+    }
+}
+public class LabTask4 {
+    public static int numberOfDaysInAYear(int year) {
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            return 366; }
+        else {
+            return 365; }
+    }
+    public static void main(String[] args) {
+        System.out.println("Year\tDays");
+        for (int year = 2000; year <= 2020; year++) {
+            System.out.println(year + "\t" + numberOfDaysInAYear(year));
+        }
+    }	
+}
+import java.util.Scanner;
+
+public class LabTask5 {
+    public static int countLetters(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isLetter(s.charAt(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String s = scn.nextLine();
+        scn.close();
+        System.out.println("Number of letters: " + countLetters(s));
+    }
+}
+import java.util.Scanner;
+public class LabTask6 {
+    public static String capitalize(String lower_case_word) {
+        return lower_case_word.substring(0,1).toUpperCase() + lower_case_word.substring(1);
+    }
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a line of lowercase words:");
+        String line = input.nextLine();
+        String result = "";
+        String word = "";
+        for(int i = 0; i < line.length(); i++) {
+            char ch = line.charAt(i);
+            if(ch != ' ') {
+                word += ch; }
+             else {
+                result += capitalize(word) + " ";
+                word = ""; 
+            }
+        }
+        result += capitalize(word);
+        System.out.println("Output:");
+        System.out.println(result);
+    }
+}
+import java.util.Scanner;
+public class LabTask7 {
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print((int)(Math.random() * 2) + " "); }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter n: ");
+        int n = scn.nextInt();
+        scn.close();
+        printMatrix(n);
+    }
+}
+import java.util.Scanner;
+public class LabTask8 {
+    public static int countVowels(String s) {
+        int count = 0;
+        s = s.toLowerCase();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String s = scn.nextLine();
+        scn.close();
+        System.out.println("Number of Vowels in the string: " + countVowels(s));
+    }
+}
