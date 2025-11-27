@@ -1,0 +1,153 @@
+import java.util.Scanner;
+public class LabTask1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[][] array = new int[3][4];
+        System.out.println("Enter 3x4 array elements:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                array[i][j] = input.nextInt();
+            }
+        }
+        input.close();
+        System.out.println("Entered array:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int maxRowSum = Integer.MIN_VALUE;
+        int maxRowIndex = -1;
+        for (int i = 0; i < 3; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < 4; j++) {
+                rowSum += array[i][j];
+            }
+            if (rowSum > maxRowSum) {
+                maxRowSum = rowSum;
+                maxRowIndex = i;
+            }
+        }
+        System.out.println("Row with maximum sum: " + (maxRowIndex + 1));
+        System.out.println("Maximum row sum: " + maxRowSum);
+        int maxColSum = Integer.MIN_VALUE;
+        int maxColIndex = -1;
+        for (int j = 0; j < 4; j++) {
+            int colSum = 0;
+            for (int i = 0; i < 3; i++) {
+                colSum += array[i][j];
+            }
+            if (colSum > maxColSum) {
+                maxColSum = colSum;
+                maxColIndex = j;
+            }
+        }
+        System.out.println("Column with maximum sum: " + (maxColIndex + 1));
+        System.out.println("Maximum column sum: " + maxColSum);
+    }
+}
+
+import java.util.Scanner;
+public class LabTask2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[][] array = new int[3][4];
+        System.out.println("Enter 3x4 array elements:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                array[i][j] = scanner.nextInt();
+            }
+        }
+        scanner.close();
+        System.out.println("Entered array:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int maxPrimeRow = 0;
+        int maxPrimeCountRow = 0;
+        for (int i = 0; i < 3; i++) {
+            int primeCount = 0;
+            for (int j = 0; j < 4; j++) {
+                if (isPrime(array[i][j])) {
+                    primeCount++;
+                }
+            }
+            if (primeCount > maxPrimeCountRow) {
+                maxPrimeCountRow = primeCount;
+                maxPrimeRow = i + 1;
+            }
+        }
+        int maxPrimeCol = 0;
+        int maxPrimeCountCol = 0;
+        for (int j = 0; j < 4; j++) {
+            int primeCount = 0;
+            for (int i = 0; i < 3; i++) {
+                if (isPrime(array[i][j])) {
+                    primeCount++;
+                }
+            }
+            if (primeCount > maxPrimeCountCol) {
+                maxPrimeCountCol = primeCount;
+                maxPrimeCol = j + 1;
+            }
+        }
+        System.out.println("Row with maximum prime numbers: " + maxPrimeRow);
+        System.out.println("Maximum prime numbers in a row: " + maxPrimeCountRow);
+        System.out.println("Column with maximum prime numbers: " + maxPrimeCol);
+        System.out.println("Maximum prime numbers in a column: " + maxPrimeCountCol);
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+import java.util.Scanner;
+public class LabTask3 {
+public static void main(String[] args) {
+    Scanner input=new Scanner(System.in);
+    int[][] matrixA=new int[3][4];
+    int[][] matrixB=new int[4][3];
+    int[][] result=new int[3][3];
+    System.out.println("Enter elements of 3x4 matrix(Matrix A):");
+    for(int i=0;i<3;i++){
+        for(int j=0;j<4;j++){
+            matrixA[i][j]=input.nextInt();
+        }
+    }
+    System.out.println("Enter elements of 4x3 matrix(Matrix B):");
+    for(int i=0;i<4;i++){
+        for(int j=0;j<3;j++){
+            matrixB[i][j]=input.nextInt();
+        }
+    }
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            result[i][j]=0;
+            for(int k=0;k<4;k++){
+                result[i][j]+=matrixA[i][k]*matrixB[k][j];
+            }
+        }
+    }
+    System.out.println("Resultant 3x3 matrix after multiplication:");
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            System.out.print(result[i][j]+"\t");
+        }
+        System.out.println();
+    }
+    input.close();
+  }    
+}
