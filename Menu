@@ -1146,3 +1146,173 @@ public class Assignment3 {
         return result;
     }
 }
+import java.io.*;
+import java.util.*;
+
+public class Assignment4 {
+    static Scanner sc=new Scanner(System.in);
+    public static void main(String[] args) {
+        while(true) {
+            try {
+            System.out.println("\n====== MENU ======");
+            System.out.println("1. Write 100 random integers to Text_IO.txt");
+            System.out.println("2. Count characters, words, lines in file");
+            System.out.println("3. Baby name ranking search");
+            System.out.println("4. Sum integers & log errors");
+            System.out.println("5. Search word in file");
+            System.out.println("6. Exit");
+            System.out.print("Choose option: ");
+            int choice = sc.nextInt(); sc.nextLine();
+            switch(choice) {
+                case 1: q1(); break;
+                case 2: q2(); break;
+                case 3: q3(); break;
+                case 4: q4(); break;
+                case 5: q5(); break;
+                case 6: System.out.println("Exiting program... Goodbye!");
+                return;
+                default: System.out.println("Invalid choice."); 
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invlaid input! Enter a number.");
+                sc.nextLine();
+            } catch(Exception e) {
+                System.out.println("Unexpected error: " + e.getMessage());
+            }
+        }
+    }
+    public static void q1() {
+        try {
+            File file=new File("Text_IO.txt");
+            FileWriter fw=new FileWriter(file,true);
+            Random r = new Random();
+            for (int i=0;i<100;i++) {
+                fw.write(r.nextInt(1000) + " ");
+            }
+            fw.write("\n");
+            fw.close();
+            System.out.println("Data written successfully.");
+        } catch(FileNotFoundException e) {
+            System.out.println("File cannot be created or opened.");
+        } catch(IOException e) {
+            System.out.println("I/O Error while writing to file.");
+        } catch(Exception e) {
+            System.out.println("Unexpected Error: " + e.getMessage());
+        }
+    }
+    public static void q2() {
+        try {
+            System.out.print("Enter filename: ");
+            String fileName=sc.nextLine();
+            File file=new File(fileName);
+            Scanner reader=new Scanner(file);
+            int chars=0, words=0, lines=0;
+            while(reader.hasNextLine()) {
+                String line=reader.nextLine();
+                lines++;
+                chars+=line.length();
+                words+=line.trim().isEmpty() ? 0 : line.trim().split("\s+").length;
+            }
+            reader.close();
+            System.out.println("Characters: " + chars);
+            System.out.println("Words: "+ words);
+            System.out.println("Lines: " + lines);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        } catch (IllegalStateException e) {
+            System.out.println("Scanner used after closing.");
+        } catch (Exception e) {
+            System.out.println("Unexpected error: " + e.getMessage()); 
+        }
+    }
+    public static void q3() {
+        try {
+            System.out.print("Enter year(2015-2018): ");
+            int year=sc.nextInt(); sc.nextLine();
+            System.out.print("Enter gender (M/F): ");
+            String g=sc.nextLine();
+            if(g.isEmpty()) throw new StringIndexOutOfBoundsException();
+            char gender=g.toUpperCase().charAt(0);
+            System.out.print("Enter name: ");
+            String name=sc.nextLine();
+            String file="babynameranking" + year + ".txt";
+            Scanner reader=new Scanner(new File(file));
+            while(reader.hasNextLine()) {
+                String[] data = reader.nextLine().split("\s+");
+                if (data.length<4) continue;
+                int rank=Integer.parseInt(data[0]);
+                if (gender=='M' && data[1].equalsIgnoreCase(name)) {
+                    System.out.println(name + " is ranked #" + rank + " in year" + year);
+                    reader.close(); return;
+                }
+            }
+            reader.close();
+            System.out.println("Name not found");
+        } catch (FileNotFoundException e) {
+            System.out.println("Baby name ranking file not found."); 
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ranking number inside file.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Corrupted file line detected.");
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Gender input cannot be empty.");
+        } catch (Exception e) {
+            System.out.println("Unexpected error: " + e.getMessage());
+        }    
+    }
+    public static void q4() {
+        try {
+            System.out.print("Enter filename: ");
+            String fileName=sc.nextLine();
+            Scanner reader= new Scanner(new File(fileName));
+            FileWriter log=new FileWriter("error_log.txt, true");
+            long sum=0;
+            int lineNum=0;
+            while(reader.hasNextLine()) {
+                String line= reader.nextLine(); lineNum++;
+                for (String s : line.split("\s")) {
+                    try {sum += Integer.parseInt(s);
+                    } catch (NumberFormatException ex) {
+                        log.write("Line " + lineNum + ": Invalid value " + s + " ");
+                    }
+                }
+            }
+            reader.close(); log.close();
+            System.out.println("Total valid sum: " + sum);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        } catch (IOException e) {
+            System.out.println("Error writing to log file.");
+        } catch (Exception e) {
+            System.out.println("Unexpected error: " + e.getMessage());
+        }
+    }
+    public static void q5() {
+        try {
+            System.out.print("Enter filename: ");
+            String fileName=sc.nextLine();
+            System.out.println("Enter word to search: ");
+            String word = sc.nextLine();
+            Scanner reader = new Scanner(new File(fileName));
+            int lineNum=0;
+            ArrayList<Integer> foundLines=new ArrayList<>();
+            while(reader.hasNextLine()) {
+                lineNum++;
+                if (reader.nextLine().toLowerCase().contains(word.toLowerCase())) { 
+                    foundLines.add(lineNum); }
+                }
+                reader.close();
+                if (foundLines.isEmpty()) {
+                    System.out.println("Word not found."); }
+                else {
+                    System.out.println("Word found at lines: " + foundLines);
+                }  
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found.");
+            } catch (NullPointerException e) {
+                System.out.println("Null value encountered.");
+            } catch (Exception e) {
+                System.out.println("Unexpected error: " + e.getMessage());
+        } 
+    }
+}
